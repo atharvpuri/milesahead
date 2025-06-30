@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MilesAhead – Enter The Space</title>
+  <link rel="stylesheet" href="ui.css" />
+  <style>
+    body {
+      background: radial-gradient(circle at 30% 30%, #1a0033, #000000 90%);
+      overflow-x: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
+
+    /* Animated Neon Light Flicker */
+    .city-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('https://i.imgur.com/OTFq3eJ.jpg') center center / cover no-repeat;
+      opacity: 0.08;
+      z-index: -2;
+      filter: blur(15px) brightness(0.8) saturate(1.2);
+      animation: slowZoom 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes slowZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    .space-wrapper {
+      max-width: 1200px;
+      margin: auto;
+      padding: 6vh 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .space-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .space-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 0 40px rgba(180, 0, 255, 0.2);
+      transition: 0.3s ease-in-out;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .space-card:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 50px rgba(255, 0, 255, 0.5);
+    }
+
+    .space-card h3 {
+      font-size: 1.5rem;
+      color: #ff80ff;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+    }
+
+    .space-card p {
+      font-size: 1rem;
+      color: #cfcfcf;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      .space-card {
+        padding: 1.5rem;
+      }
+      .space-card h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="city-glow"></div>
+
+  <div class="space-wrapper">
+    <div class="space-grid">
+      <div class="space-card">
+        <h3>🚀 Philosophy</h3>
+        <p>Discuss life, absurdism, and what it means to exist.</p>
+      </div>
+      <div class="space-card">
+        <h3>🔥 Rant Room</h3>
+        <p>No filters, just raw thoughts echoing in neon voids.</p>
+      </div>
+      <div class="space-card">
+        <h3>🎭 Story Space</h3>
+        <p>Tell epic tales and dark lore that shapes realities.</p>
+      </div>
+      <div class="space-card">
+        <h3>🧠 Debate Arena</h3>
+        <p>Clash thoughts. Share ideologies. Win minds.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load JS Properly (OUTSIDE <script>) -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>

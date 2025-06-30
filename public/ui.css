@@ -1,0 +1,212 @@
+/* ===== RESET + BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* ===== BACKGROUND FX ===== */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(120deg, #0f0f0f, #1a1a1a);
+  z-index: -2;
+}
+
+.background::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 0, 255, 0.05), transparent 60%);
+  animation: pulse 8s infinite linear;
+  z-index: -1;
+  opacity: 0.3;
+  pointer-events: none;
+  filter: blur(100px);
+}
+
+@keyframes pulse {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ===== GLASS UI CONTAINER ===== */
+.glass-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 10vh auto;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ===== LOGO ===== */
+.logo {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #9e00ff;
+  text-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+/* ===== SUBTITLE ===== */
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #aaa;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* ===== GENDER BUTTONS ===== */
+.gender-select {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gender-btn {
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(145deg, #240046, #5a189a);
+  box-shadow: 0 0 20px rgba(144, 0, 255, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.gender-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #9d4edd, #7b2cbf);
+  box-shadow: 0 0 40px rgba(255, 0, 255, 0.6);
+}
+
+/* ===== FOOTER TEXT ===== */
+.footer-text {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #777;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .glass-container {
+    padding: 30px 20px;
+  }
+  .logo {
+    font-size: 2rem;
+  }
+}
+.chat-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.chat-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #bb86fc;
+  text-shadow: 0 0 10px #9d4edd;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  overflow-y: auto;
+  box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.1);
+}
+
+.chat-input-box {
+  display: flex;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+#msg-input {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+#send-btn {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #ff00ff, #7209b7);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#send-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+}
+
+.msg {
+  margin-bottom: 0.8rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.msg.self {
+  align-self: flex-end;
+  background: rgba(0, 255, 191, 0.2);
+  color: #00ffe7;
+  margin-left: auto;
+  text-align: right;
+}
+
+.msg.other {
+  background: rgba(200, 0, 255, 0.2);
+  color: #ff90ff;
+}
+
+.msg.system {
+  text-align: center;
+  font-style: italic;
+  color: #aaaaaa;
+}
