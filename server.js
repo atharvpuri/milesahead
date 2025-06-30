@@ -7,6 +7,10 @@ const PORT = 3000;
 
 // Serve files from the public folder (like ui.html)
 app.use(express.static('public'));
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/spaces.html'); // or 'ui.html' if that’s your main
+});
+
 
 io.on('connection', (socket) => {
   console.log('⚡ Someone connected');
